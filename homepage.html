@@ -303,6 +303,110 @@
     #outcome-page2 .next-cursor:hover {
       transform: scale(1.2);
     }
+
+       /* =============== GALLERY STYLES (Visual Novel Gallery) =============== */
+       #gallery-container {
+      text-align: center;
+      padding: 20px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    #gallery-container h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: rgba(218, 218, 218, 0.87);
+      text-shadow: 2px 2px 4px #000;
+    }
+    
+    #gallery-container section h3 {
+      color: rgba(218, 218, 218, 0.87);
+      font-size: 36px;
+      margin: 30px 0 10px;
+      text-shadow: 1px 1px 3px #000;
+    }
+    
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #fff;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    }
+    
+    .gallery-item img {
+      display: block;
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      animation: galleryEntrance 1s ease forwards;
+      transition: transform 0.4s ease;
+    }
+    
+    @keyframes galleryEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item::after {
+      content: attr(data-caption);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+    
+       /* =============== BACK BUTTON STYLES =============== */
+       .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    
+    .back-button:hover {
+      transform: scale(1.1);
+      background: rgba(0,0,0,0.8);
+    }
+
   </style>
 </head>
 <body>
@@ -467,23 +571,122 @@
   </div>
   
 
-  <!-- Other Pages -->
+  <!-- GALLERY CONTAINER -->
   <div id="gallery-container" class="page-container">
-    <h2>Gallery Page</h2>
-    <p>This is the gallery page content.</p>
+    <h2>Visual Novel Gallery</h2>
+    
+    <section id="gallery-characters">
+      <h3>Characters</h3>
+      <div class="gallery">
+        <div class="gallery-item" data-caption="Character 1">
+          <img src="character1.jpg" alt="Character 1">
+        </div>
+        <div class="gallery-item" data-caption="Character 2">
+          <img src="character2.jpg" alt="Character 2">
+        </div>
+        <div class="gallery-item" data-caption="Character 3">
+          <img src="character3.jpg" alt="Character 3">
+        </div>
+        <div class="gallery-item" data-caption="Character 4">
+          <img src="character4.jpg" alt="Character 4">
+        </div>
+        <div class="gallery-item" data-caption="Character 5">
+          <img src="character5.jpg" alt="Character 5">
+        </div>
+      </div>
+    </section>
+    
+    <section id="gallery-scenes">
+      <h3>Scenes</h3>
+      <div class="gallery">
+        <div class="gallery-item" data-caption="Scene 1">
+          <img src="scene1.jpg" alt="Scene 1">
+        </div>
+        <div class="gallery-item" data-caption="Scene 2">
+          <img src="scene2.jpg" alt="Scene 2">
+        </div>
+        <div class="gallery-item" data-caption="Scene 3">
+          <img src="scene3.jpg" alt="Scene 3">
+        </div>
+        <div class="gallery-item" data-caption="Scene 4">
+          <img src="scene4.jpg" alt="Scene 4">
+        </div>
+        <div class="gallery-item" data-caption="Scene 5">
+          <img src="scene5.jpg" alt="Scene 5">
+        </div>
+      </div>
+    </section>
+    
+    <section id="gallery-backgrounds">
+      <h3>Backgrounds</h3>
+      <div class="gallery">
+        <div class="gallery-item" data-caption="Background 1">
+          <img src="bg1.png" alt="Background 1">
+        </div>
+        <div class="gallery-item" data-caption="Background 2">
+          <img src="bg2.png" alt="Background 2">
+        </div>
+        <div class="gallery-item" data-caption="Background 3">
+          <img src="bg3.jpg" alt="Background 3">
+        </div>
+        <div class="gallery-item" data-caption="Background 4">
+          <img src="bg4.jpg" alt="Background 4">
+        </div>
+        <div class="gallery-item" data-caption="Background 5">
+          <img src="bg5.jpg" alt="Background 5">
+        </div>
+      </div>
+    </section>
   </div>
+  
+  <!-- ABOUT CONTAINER -->
   <div id="about-container" class="page-container">
-    <h2>About Page</h2>
-    <p>This is the about page content.</p>
+    <div class="dialogue-box" style="position: absolute; top: 0; bottom: 0; width: 100%;">
+      <h2>About LOST IDENTITY</h2>
+      <p>
+        LOST IDENTITY is a visual novel that delves into the mysterious past of its characters,
+        weaving a narrative of suspense, mystery, and the supernatural.
+        Unravel the secrets hidden within the pages of forgotten memories.
+      </p>
+    </div>
   </div>
+  
+  <!-- TUTORIALS CONTAINER (Expanded) -->
   <div id="tutorials-container" class="page-container">
-    <h2>Tutorials Page</h2>
-    <p>This is the tutorials page content.</p>
+    <div class="dialogue-box" style="position: absolute; top: 0; bottom: 0; width: 100%; overflow-y: auto;">
+      <h2>Tutorials</h2>
+      <p>
+        Welcome to the Tutorials page! Here you'll learn how to navigate the visual novel and make the most out of your experience.
+      </p>
+      <h3>How to Navigate</h3>
+      <ul>
+        <li><strong>Play:</strong> Begin your journey and trigger the narrative by clicking the PLAY button.</li>
+        <li><strong>Gallery:</strong> View characters, scenes, and backgrounds from the visual novel.</li>
+        <li><strong>About:</strong> Learn more about the story and the creative process behind LOST IDENTITY.</li>
+        <li><strong>Settings:</strong> Customize your experience and tweak gameplay options.</li>
+      </ul>
+      <h3>Making Choices</h3>
+      <p>
+        As you progress, you’ll be presented with choices that impact the narrative. Whether you eavesdrop or observe from afar, your decisions will shape the story.
+      </p>
+      <h3>Tips & Tricks</h3>
+      <ul>
+        <li>Take your time to read the dialogue carefully—the typewriter effect is designed to immerse you in the story.</li>
+        <li>Experiment with different choices to uncover hidden outcomes and secret story paths.</li>
+        <li>If you ever feel lost, use the Back button to return to the main menu and explore other sections.</li>
+      </ul>
+      <p>
+        Enjoy your journey into the mysterious world of LOST IDENTITY and uncover the secrets that lie beneath the surface.
+      </p>
+    </div>
   </div>
+  
+  <!-- SETTINGS CONTAINER -->
   <div id="settings-container" class="page-container">
-    <h2>Settings Page</h2>
-    <p>This is the settings page content.</p>
-  </div>
+    <div class="dialogue-box" style="position: absolute; top: 0; bottom: 0; width: 100%;">
+      <h2>Settings</h2>
+      <p>Configure your preferences and customize your gameplay experience.</p>
+    </div>
 
   <script>
     // Show a specific page container and hide others
@@ -617,6 +820,12 @@
     document.getElementById('settings-btn').addEventListener('click', function(e) {
       e.preventDefault();
       showPage('settings-container');
+    });
+
+     
+    // Back Button returns to homepage
+    document.getElementById('back-btn').addEventListener('click', function() {
+      showPage('home-container');
     });
   </script>
 </body>
